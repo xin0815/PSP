@@ -1,0 +1,115 @@
+html {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+#header {
+	position: absolute;
+	width: 100%;
+	height: 500px;
+	background-color: #3d84bd;
+	min-width: 980px;
+	min-height: 400px;
+}
+
+#footer {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	height: 10%;
+	top: 500px;
+	bottom: 0px;
+	background: #fff;
+	min-width: 790px;
+}
+
+.zuihou {
+	margin: 0px 0px 0px 0px;
+	padding: 12px 0px 0px 0px;
+	text-align: center;
+	color: #448282;
+	font-size: 12px;
+}
+
+.zuihou p {
+	margin: 0px 0px 0px 0px;
+	padding: 15px 0px 0px 0px;
+}
+
+.tubiao {
+	padding: 0px 0px 0px 0px;
+}
+
+#pic {
+	position: absolute;
+	margin: 0 auto;
+	padding: 311px 0px 0px 0px;
+	float: left;
+}
+
+#pic img {
+	max-width: 580px;
+}
+
+.biaoti {
+	padding: 0px 0px 0px 0px;
+}
+
+#pics {
+	position: absolute;
+	margin: 0 auto;
+	padding: 150px 0px 0px 380px;
+	float: left;
+	max-width: 74%;
+}
+
+#pics img {
+	max-width: 80%;
+}
+
+.ditu {
+	padding: 0px 0px 0px 0px;
+}
+
+#picss {
+	width: 580px;
+	height: 200px;
+	margin: 0 auto;
+	padding: 0px 0px 0px 0px;
+	float: right;
+	background: url(../images/12.png) no-repeat;
+}
+
+#picss img {
+	padding: 0px 0px 0px 0px;
+	max-width: 522px;
+}
+
+.denglu {
+	position: absolute;
+	padding: 250px 0px 0px 35%;
+	margin: 0 auto;
+	float: left;
+}
+
+#tu {
+	margin: 0 auto;
+	width: 500px;
+	padding: 50px 0px 0px 200px;
+	cursor: pointer;
+}
+
+#tu img {
+	max-width: 400px;
+}
+
+.lianjie {
+	padding: 0px 0px 0px 0px;
+}

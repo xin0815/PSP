@@ -1,0 +1,5 @@
+#Thu Apr 24 19:07:54 CST 2014
+eclipse.preferences.version=1
+validator.Checked=WebRoot/bootstrap,WebRoot/WEB-INF,WebRoot/js,WebRoot/ckeditor
+validator.Revalidate=true
+validator.Unchecked=

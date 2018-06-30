@@ -1,0 +1,350 @@
+html {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	overflow: auto;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+#header {
+	position: absolute;
+	width: 100%;
+	height: 112px;
+	background-color: #3d84bd;
+	min-width: 1000px;
+}
+
+#head {
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	top: 112px;
+	background-color: #fff;
+	min-width: 1000px;
+}
+
+.bar_link {
+	margin-top: 2px;
+	color: #000;
+}
+
+.bar_link a {
+	font-size: 12px;
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+#left_content {
+	width: 200px;
+	position: absolute;
+	top: 132px;
+	bottom: 0px;
+	left: 0px;
+	background-color: #fff;
+}
+
+#center {
+	position: absolute;
+	top: 132px;
+	bottom: 0px;
+	left: 210px;
+	right: 0px;
+	min-width: 790px;
+	min-height: 650px;
+}
+
+#center_content {
+	position: absolute;
+	top: 0px;
+	bottom: 80px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
+}
+
+#center_content img {
+	max-width: 790px;
+	width: expression(document.body.clientWidth > document.getElementById (
+		"center_content") . scrollWidth * 9/10 ?   "790px" :   "auto" );
+}
+
+iframe {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	bottom: 80px;
+	padding: 0px;
+}
+
+#footer {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	bottom: 0px;
+	height: 80px;
+	background-color: #646161;
+	min-width: 790px;
+	z-index: 0;
+}
+
+.zuihou {
+	margin: 0px 0px 0px 0px;
+	padding: 12px 0px 0px 0px;
+	text-align: center;
+	color: #fff;
+	font-size: 12px;
+}
+
+.zuihou p {
+	margin: 0px 0px 0px 0px;
+	padding: 5px 0px 0px 0px;
+}
+
+.tubiao {
+	padding: 0px 0px 0px 0px;
+}
+
+#pic {
+	position: absolute;
+	margin: 0px 0px 0px 0px;
+	width: 107px;
+	height: 107px;
+	padding: 8px 0px 0px 70px;
+	float: left;
+}
+
+#pic img {
+	max-width: 580px;
+}
+
+.biaoti {
+	padding: 0px 0px 0px 0px;
+}
+
+#pics {
+	position: absolute;
+	margin: 0px 0px 0px 0px;
+	width: 690px;
+	height: 53px;
+	padding: 35px 0px 0px 220px;
+	float: left;
+}
+
+#pics img {
+	max-width: 580px;
+	width: expression(document.body.clientWidth > document.getElementById ( "pics")
+		. scrollWidth * 9/10 ?   "580px" :   "auto" );
+}
+
+.ditu {
+	padding: 0px 0px 0px 0px;
+}
+
+#picss {
+	width: 522px;
+	height: 112px;
+	margin: 0 auto;
+	padding: 0px 0px 0px 0px;
+	float: right;
+	background: url(../images/ditu.png) repeat-y;
+}
+
+#picss img {
+	padding: 0px 0px 0px 0px;
+	max-width: 522px;
+	width: expression(document.body.clientWidth > document.getElementById ( "picss"
+		) . scrollWidth * 9/10 ?   "522px" :   "auto" );
+}
+
+.denglu {
+	margin: 0px 0px 0px 45px;
+	padding: 0px 0px 0px 0px;
+}
+
+.leftbar {
+	margin: 0px 0px 0px 45px;
+	padding: 0px 0px 0px 0px;
+	height: 640px;
+	width: 155px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: #ddd;
+}
+
+ul#sidemenu,ul#sidemenu ul {
+	text-align: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	width: 150px;
+}
+
+ul#sidemenu a {
+	display: block;
+	text-decoration: none;
+}
+
+ul#sidemenu li {
+	margin: 0px auto;
+	cursor: pointer;
+}
+
+ul#sidemenu li a {
+	font-size: 12px;
+	color: #fff;
+	height: 41px;
+	line-height: 37px;
+	padding-left: 0px;
+	display: block;
+	background: #3879ad;
+}
+
+ul#sidemenu li a:hover {
+	background: #3879ad;
+}
+
+ul#sidemenu li ul li a {
+	background: #ccc;
+	color: #000;
+	padding-left: 20px;
+}
+
+ul#sidemenu li ul li a:hover {
+	background: #aaa;
+	border-left: 10px #3879ad solid;
+	padding-left: 15px;
+}
+
+.english {
+	float: left;
+	width: 18px;
+	height: 432px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	background: url(../images/hou.png) no-repeat;
+}
+
+ul#sidemenu li a.one {
+	display: block;
+	background: url(../images/1.png) no-repeat;
+}
+
+ul#sidemenu li a.one:hover {
+	background: url(../images/001.png) no-repeat;
+}
+
+ul#sidemenu li a.two {
+	display: block;
+	background: url(../images/2.png) no-repeat;
+}
+
+ul#sidemenu li a.two:hover {
+	background: url(../images/002.png) no-repeat;
+}
+
+ul#sidemenu li a.three {
+	display: block;
+	background: url(../images/3.png) no-repeat;
+}
+
+ul#sidemenu li a.three:hover {
+	background: url(../images/003.png) no-repeat;
+}
+
+ul#sidemenu li a.four {
+	display: block;
+	background: url(../images/4.png) no-repeat;
+}
+
+ul#sidemenu li a.four:hover {
+	background: url(../images/004.png) no-repeat;
+}
+
+ul#sidemenu li a.five {
+	display: block;
+	background: url(../images/5.png) no-repeat;
+}
+
+ul#sidemenu li a.five:hover {
+	background: url(../images/005.png) no-repeat;
+}
+
+ul#sidemenu li a.six {
+	display: block;
+	background: url(../images/6.png) no-repeat;
+}
+
+ul#sidemenu li a.six:hover {
+	background: url(../images/006.png) no-repeat;
+}
+
+ul#sidemenu li a.seven {
+	display: block;
+	background: url(../images/7.png) no-repeat;
+}
+
+ul#sidemenu li a.seven:hover {
+	background: url(../images/007.png) no-repeat;
+}
+
+ul#sidemenu li a.eight {
+	display: block;
+	background: url(../images/8.png) no-repeat;
+}
+
+ul#sidemenu li a.eight:hover {
+	background: url(../images/008.png) no-repeat;
+}
+
+ul#sidemenu li a.nine {
+	display: block;
+	background: url(../images/9.png) no-repeat;
+}
+
+ul#sidemenu li a.nine:hover {
+	background: url(../images/009.png) no-repeat;
+}
+
+ul#sidemenu li a.ten {
+	display: block;
+	background: url(../images/10.png) no-repeat;
+}
+
+ul#sidemenu li a.ten:hover {
+	background: url(../images/010.png) no-repeat;
+}
+
+ul#sidemenu li a.eleven {
+	display: block;
+	background: url(../images/11.png) no-repeat;
+}
+
+ul#sidemenu li a.eleven:hover {
+	background: url(../images/011.png) no-repeat;
+}
+
+ul#sidemenu li a.twelve {
+	display: block;
+	background: url(../images/012.png) no-repeat;
+}
+
+ul#sidemenu li a.twelve:hover {
+	background: url(../images/0012.png) no-repeat;
+}
+
+ul#sidemenu li a.thirteen {
+	display: block;
+	background: url(../images/013.png) no-repeat;
+}
+
+ul#sidemenu li a.thirteen:hover {
+	background: url(../images/0013.png) no-repeat;
+}

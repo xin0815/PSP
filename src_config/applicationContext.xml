@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<context:annotation-config />
+	<!-- 设置属性文件位置 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- 扫描包 -->
+	<context:component-scan base-package="com.imnu.cnt.*">
+		<context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation" />
+	</context:component-scan>
+
+	<!-- 配置c3p0数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+
+		<property name="driverClass" value="${jdbc.driverclass}" />
+
+		<property name="jdbcUrl" value="${jdbc.url}" />
+
+		<property name="user" value="${jdbc.username}" />
+
+		<property name="password" value="${jdbc.password}" />
+
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
+
+		<property name="minPoolSize" value="${jdbc.minPoolSize}" />
+
+		<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
+
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}" />
+
+	</bean>
+
+	<!-- 本地会话工厂bean(spring整合hibernate资源的核心入口) -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 指定hibernate自身的属性 -->
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=${hibernate.dialect}
+				hibernate.hbm2ddl.auto=${hibernate.hbm2ddl.auto}
+				hibernate.show_sql=${hibernate.show_sql}
+				hibernate.format_sql=${hibernate.format_sql}
+				
+			</value>
+		</property>
+		<!-- 指定映射目录位置集 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:com/imnu/cnt/system/model</value>
+				<value>classpath:com/imnu/cnt/ssg/model</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 配置操作数据库的类 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 配置事务管理器-->
+	<bean id="hibernateTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="hibernateTransactionManager">
+		<!--配置回滚条件-->
+		<tx:attributes>
+			<tx:method name="get*" propagation="REQUIRED"
+				isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="query*" read-only="true" propagation="REQUIRED"
+				isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="find*" read-only="true" propagation="REQUIRED"
+				isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="load*" read-only="true" propagation="REQUIRED"
+				isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="list*" read-only="true" propagation="REQUIRED"
+				isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="new*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="batch*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+			<tx:method name="is*" read-only="true" propagation="REQUIRED"
+				isolation="DEFAULT" rollback-for="com.imnu.cnt.system.exception.ServiceException"/>
+		</tx:attributes>
+	</tx:advice>
+	<!--配置哪个包里的需要回滚-->
+     <aop:config>
+		<aop:pointcut expression="execution(* com.imnu.cnt..service..*.*(..))"
+			id="bussinessService" />
+		<aop:advisor pointcut-ref="bussinessService" advice-ref="txAdvice" />
+	</aop:config>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+</beans>
