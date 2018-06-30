@@ -55,7 +55,6 @@
 		<property name="mappingDirectoryLocations">
 			<list>
 				<value>classpath:com/imnu/cnt/system/model</value>
-				<value>classpath:com/imnu/cnt/ssg/model</value>
 			</list>
 		</property>
 	</bean>

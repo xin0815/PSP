@@ -8,7 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src_config"/>
 	<classpathentry kind="src" path="src_system"/>
-	<classpathentry kind="src" path="src_ssg"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/antlr-2.7.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/aopalliance-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/asm.jar"/>
