@@ -43,7 +43,7 @@ function checkOldPassword(){
 	if(oldPass == "" || !ajaxCommonCheck("sysUser/checkOldPass?userId="+userId+"&oldPassword="+oldPass)){
 		swal("错误提示", "请填写正确的原密码", "error");
 		return false;
-	}
+	}	
 	return true;
 }
 

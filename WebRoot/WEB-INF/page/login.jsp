@@ -32,7 +32,6 @@ $(function(){
                  {
                    $("#uname").val($("#username").val());
                    $("#pass").val($("#password").val());
-                   $("#yzmtext").val($("#yzm").val());
                    $.postJSON4Form($("#checkform"),function(d) {
             		
             			if(d['result'] == '2')
@@ -43,11 +42,7 @@ $(function(){
                     			{
                 				  alert('密码不正确');
                                   return false;
-                    			}else if(d['result'] == '5')
-                    			{
-	                  				  alert('验证码不正确');
-	                                  return false;
-	                      		}
+                    			}
                 			else if(d['result'] == '4')//进行登录操作
                 			{
                 				 $.postJSON4Form($("#loginform"),function(d) {
@@ -77,17 +72,14 @@ $(function(){
             <img src="images/tubiao.png">
         </div>
         <div class="szh">
-            <img src="images/glxt.png">
+            <img src="images/da01.png">
         </div>
         <div class="Uform">
             <form action="<%=path%>/lg/login" id="loginform" method="post">
             	<input type="hidden" name="method" value="login" />
                 <input type="text" class="username" id="username" name = "username" autocomplete="off"><br>
                 <input type="password" class = "password" id="password" name = "password">
-                <input  type="text" name="yzm" class="yzm" id="yzm" style="margin-top:15px;background-image: url(<%=basePath %>images/input_password.png);" />
-                <td align="right">
-					      	<img src="<%=basePath%>ImageRandServlet" />
-				</td>
+                
                 <button type="button" class="btn_sub" id="dengluBtn"></button>
             </form>
         </div>
@@ -114,7 +106,6 @@ $(function(){
 			<input type="hidden" name="method" value="ajaxCheck" />
 			<input type="hidden" name="username" id="uname" />
 			<input type="hidden" name="password" id="pass" />
-			<input type="hidden" name="yzm" id="yzmtext"/>
 	</form>
 	<script type="text/javascript">
 		<c:if test="${result=='1'}">window.parent.location.href='<%=basePath%>main/login';</c:if>

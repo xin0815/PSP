@@ -40,7 +40,6 @@ public class LoginController {
 		String name = (String) map.get("username");
 		String password = (String) map.get("password");
 		String methodValue = (String) map.get("method");
-		String yzm = (String)map.get("yzm");
 		user = checkUser(name, password);
 		if (methodValue != null && methodValue.equals("login") && user != null) {
 			if (stype == null || stype.equals("0")) {
@@ -73,11 +72,6 @@ public class LoginController {
 				s = syUserService.checkUserName(name);
 			} catch (ServiceException e) {
 				e.printStackTrace();
-			}
-			String rand = (String)request.getSession().getAttribute("rand");
-			if(!rand.equals(yzm)){
-				result.put("result", "5");//验证码不正确
-				return result;
 			}
 			if(s== null){
 				result.put("result", "2");//用户不存在
