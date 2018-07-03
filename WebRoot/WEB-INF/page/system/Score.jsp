@@ -21,7 +21,9 @@
         <script language="javascript" src="<%=basePath%>sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<%=basePath%>sweetalert/dist/sweetalert.css" />
         <link rel="stylesheet" type="text/css" href="<%=basePath%>css/bg_new.css" />
+		<script language="javascript" src="<%=basePath%>js/jquery.base64.js"></script>
 		<script language="javascript" src="<%=basePath%>js/common.js"></script>
+		<script language="javascript" src="<%=basePath%>js/tableExport.js"></script>
 		
 	</head>
 <script language="javascript">
@@ -64,7 +66,6 @@ function changeform()
 
 
 	<body>
-	<%=basePath%>system/SysUser_list2
 		<form action="sysUser/query" method="post" id="sysUserForm">
 		<nav class="navbar navbar-default" role="navigation"
 			style="background-color: rgb(241, 240, 240)">
@@ -114,16 +115,11 @@ function changeform()
 				<br/>
 
 				   	<button type="button" class="btn btn-success" id="print">
-						导出Excel
+				   	<a href = "<%=basePath %>export">导出Excel</a>
 					</button>	
 				   <button type="button" class="btn btn-success" id="printshow">
 				   <a href="<%=basePath %>download">打印证明</a> 	
 				   </button>
-						
-				
-					<button type="button" class="btn btn-success" id="printshow">
-						打印预览
-					</button>
 					<button type="button" class="btn btn-success" id="print" onclick=preview()>
 						打印
 					</button>	
@@ -179,7 +175,7 @@ function changeform()
 		
 		<!--startprint-->
 		<center>
-		<table border="1" cellspacing="0"style="width:210mm;">
+		<table border="1" cellspacing="0"style="width:210mm; " >
 		
 			<caption style="text-align:center">内蒙古师范大学学生成绩单</caption>
 			<tr>
@@ -192,7 +188,7 @@ function changeform()
 		    <td style="word-break: break-all;  text-align:center;">班级</td>
 		     <td style="word-break: break-all;  text-align:center;">05级人力国交2班</td>
 			</tr>
-		<table>
+		</table>
 		<table border="1" cellspacing="0"style="width:210mm;">
 		    <tr>
 		    <td width="45px" style="word-break: break-all;  text-align:center;">专业</td>
@@ -206,8 +202,8 @@ function changeform()
 		    <td style="word-break: break-all;  text-align:center;">培养方案1111111111111111111111111111111111111111</td>
 		    <td width="40%"colspan="3" style="word-break: break-all;  text-align:center;">人力资源管理方案（国交）a1111111111111111111111</td>
 		    </tr>
-		 <table>
-		 <table border="1" cellspacing="0"style="width:210mm;">
+		 </table>
+		 <table border="1" cellspacing="0"style="width:210mm;" >
 		   	<tr>
 		    <th colspan="2" width="35%" style="word-break: break-all;  text-align:center;">课程名</th>
 		    <th   width="7%"  style="word-break: break-all;  text-align:center;">学分</th>
@@ -217,7 +213,7 @@ function changeform()
 		    <th  width="7px" style="word-break: break-all;  text-align:center;">成绩</th>
 		    </tr>
 		    <tr>
-			<td colspan="2" style="word-break: break-all;  text-align:center;">111111111111111111111111111111111111111111111111111111111111111111111111111</td>
+			<td colspan="2" style="word-break: break-all;  text-align:center;">111111111111111111111111111111111111</td>
 			<td style="word-break: break-all;  text-align:center;">1</td>
 		    <td style="word-break: break-all;  text-align:center;">1</td>
 		    <td colspan="2" style="word-break: break-all;  text-align:center;">1</td>

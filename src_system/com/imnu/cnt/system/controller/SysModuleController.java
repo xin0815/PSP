@@ -41,7 +41,7 @@ public class SysModuleController {
 //		request.setAttribute("pagelist", pageList);
 		request.setAttribute("sysModuleList", sysModuleList);
 		
-		return "system/SysModule_list";
+		return "system/Professional";
 	}
 	
 	@RequestMapping("query")
