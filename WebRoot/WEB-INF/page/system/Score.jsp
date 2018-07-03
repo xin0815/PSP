@@ -22,32 +22,43 @@
         <link rel="stylesheet" type="text/css" href="<%=basePath%>sweetalert/dist/sweetalert.css" />
         <link rel="stylesheet" type="text/css" href="<%=basePath%>css/bg_new.css" />
 		<script language="javascript" src="<%=basePath%>js/common.js"></script>
+		
 	</head>
 <script language="javascript">
+
 function preview()
 {
 	
 	var bdhtml=window.document.body.innerHTML;//获取当前页的html代码
-	var sprnstr="<!--startprint-->";//设置打印开始区域
-	var eprnstr="<!--endprint-->";//设置打印结束区域
+	if($("#score").val() == '1'){
+		var sprnstr="<!--startprint-->";//设置打印开始区域
+		var eprnstr="<!--endprint-->";//设置打印结束区域
+	}else if($("#score").val() == '2'){
+		var sprnstr="<!--startprint_en-->";//设置打印开始区域
+		var eprnstr="<!--endprint_en-->";//设置打印结束区域
+	}
+	
 	var prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html
 	var prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
 	window.document.body.innerHTML=prnhtml;
 	window.print();
 	window.document.body.innerHTML=bdhtml;
+	changeform();
 }
+$(document).ready(function(){
+	changeform();
+});
+
 function changeform()
 {
-
-$.post("<%=basePath %>sysUser/changeform", {uid: $('#score').val()},function(data,status){
-	
-	if(status == 'success' && data == "1"){
-		window.location.href="${basePath}system/SysUser_list2";
-		
-	}else{
-		window.location.href="${basePath}SysUser_list2.jsp";
+	if($("#score").val() == '1'){
+		$("#en_table").hide();
+		$("#cn_table").show();
+	}else if($("#score").val() == '2'){
+		$("#cn_table").hide();
+		$("#en_table").show();
 	}
-});
+	
 }
 </script>
 
@@ -164,11 +175,11 @@ $.post("<%=basePath %>sysUser/changeform", {uid: $('#score').val()},function(dat
 					
 			</table>
 		</div>
-		<div style="width:75%; margin:0 auto; " >
+		<div style="width:75%; margin:0 auto; " id="cn_table">
 		
 		<!--startprint-->
 		<center>
-		<table border="1" cellspacing="0"style="width:210mm;" >
+		<table border="1" cellspacing="0"style="width:210mm;">
 		
 			<caption style="text-align:center">内蒙古师范大学学生成绩单</caption>
 			<tr>
@@ -234,9 +245,9 @@ $.post("<%=basePath %>sysUser/changeform", {uid: $('#score').val()},function(dat
 		</div>
 		
 		
-		<div style="width:75%; margin:0 auto;">
+		<div style="width:75%; margin:0 auto;" id="en_table">
 		
-		<!--startprint-->
+		<!--startprint_en-->
 		<center>
 		<table border="1" cellspacing="0"style="width:210mm;">
 		
@@ -299,7 +310,7 @@ $.post("<%=basePath %>sysUser/changeform", {uid: $('#score').val()},function(dat
 			</tr>
 		</table>
 		</center>
-		<!--endprint-->
+		<!--endprint_en-->
 		
 		</div>
 	</body>
