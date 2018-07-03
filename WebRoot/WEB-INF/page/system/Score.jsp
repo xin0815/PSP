@@ -39,12 +39,13 @@ function preview()
 function changeform()
 {
 
-$.post("<%=basePath %>changeform", {uid: $('#score').val()},function(data,status){
+$.post("<%=basePath %>sysUser/changeform", {uid: $('#score').val()},function(data,status){
+	
 	if(status == 'success' && data == "1"){
-		window.location.href="<%=basePath%>system/SysUser_list2";
+		window.location.href="${basePath}system/SysUser_list2";
 		
 	}else{
-		window.location.href="<%=basePath%>system/SysUser_list3";
+		window.location.href="${basePath}SysUser_list2.jsp";
 	}
 });
 }
@@ -52,6 +53,7 @@ $.post("<%=basePath %>changeform", {uid: $('#score').val()},function(data,status
 
 
 	<body>
+	<%=basePath%>system/SysUser_list2
 		<form action="sysUser/query" method="post" id="sysUserForm">
 		<nav class="navbar navbar-default" role="navigation"
 			style="background-color: rgb(241, 240, 240)">
@@ -68,7 +70,7 @@ $.post("<%=basePath %>changeform", {uid: $('#score').val()},function(data,status
 					</c:forEach>
 				</select>
 				学院
-				<select id="categoryId" name="categoryId" class="input-medium">
+				<select id="nstitute" name="institute" class="input-medium">
 					<option value="">
 						---- 全部 ----
 					</option>
@@ -88,10 +90,10 @@ $.post("<%=basePath %>changeform", {uid: $('#score').val()},function(data,status
 				选择模式
 				<select id="score" class="score" class="input-medium" onchange="changeform()">
 					<option value="1">
-						英文成绩单
+						中文成绩单
 					</option>
 					<option value="2">
-						中文文成绩单
+							英文成绩单
 					</option>
 				</select>
 				<button type="submit" class="btn btn-primary" id="chaxun">
@@ -162,6 +164,76 @@ $.post("<%=basePath %>changeform", {uid: $('#score').val()},function(data,status
 					
 			</table>
 		</div>
+		<div style="width:75%; margin:0 auto; " >
+		
+		<!--startprint-->
+		<center>
+		<table border="1" cellspacing="0"style="width:210mm;" >
+		
+			<caption style="text-align:center">内蒙古师范大学学生成绩单</caption>
+			<tr>
+		    <td width="45px" style="word-break: break-all;  text-align:center;">姓名</td>
+		    <td style="word-break: break-all;  text-align:center;">张婷婷</tdh>
+		    <td style="word-break: break-all;  text-align:center;">学号</td>
+		     <td style="word-break: break-all;  text-align:center;">200520071</td>
+		    <td style="word-break: break-all;  text-align:center;">性别</td>
+		     <td style="word-break: break-all;  text-align:center;">女</td>
+		    <td style="word-break: break-all;  text-align:center;">班级</td>
+		     <td style="word-break: break-all;  text-align:center;">05级人力国交2班</td>
+			</tr>
+		<table>
+		<table border="1" cellspacing="0"style="width:210mm;">
+		    <tr>
+		    <td width="45px" style="word-break: break-all;  text-align:center;">专业</td>
+		    <td width="30%"colspan="3" style="word-break: break-all;  text-align:center;">人力资源管理</td>
+		    <td style="word-break: break-all;  text-align:center;">专业方向</td>
+		    <td width="30%" style="word-break: break-all;  text-align:center;"></td>
+		    </tr>
+		   	<tr>
+		    <td width="45px" style="word-break: break-all;  text-align:center;">院系</td>
+		    <td width="30%" colspan="3" style="word-break: break-all;  text-align:center;">经济学院<br>11111111111111111111111111111111111111111111111111111111111111111</td>
+		    <td style="word-break: break-all;  text-align:center;">培养方案1111111111111111111111111111111111111111</td>
+		    <td width="40%"colspan="3" style="word-break: break-all;  text-align:center;">人力资源管理方案（国交）a1111111111111111111111</td>
+		    </tr>
+		 <table>
+		 <table border="1" cellspacing="0"style="width:210mm;">
+		   	<tr>
+		    <th colspan="2" width="35%" style="word-break: break-all;  text-align:center;">课程名</th>
+		    <th   width="7%"  style="word-break: break-all;  text-align:center;">学分</th>
+		    <th  width="7%" style="word-break: break-all;  text-align:center;">成绩</th>
+		    <th colspan="2"  width="35%" style="word-break: break-all;  text-align:center;">课程名</th>
+		    <th  width="7px" style="word-break: break-all;  text-align:center;">学分</th>
+		    <th  width="7px" style="word-break: break-all;  text-align:center;">成绩</th>
+		    </tr>
+		    <tr>
+			<td colspan="2" style="word-break: break-all;  text-align:center;">111111111111111111111111111111111111111111111111111111111111111111111111111</td>
+			<td style="word-break: break-all;  text-align:center;">1</td>
+		    <td style="word-break: break-all;  text-align:center;">1</td>
+		    <td colspan="2" style="word-break: break-all;  text-align:center;">1</td>
+		    <td style="word-break: break-all;  text-align:center;">1</td>
+		    <td style="word-break: break-all;  text-align:center;">1</td>
+		    </tr>
+		    <tr>
+		   		<td colspan="2"></td>
+		    	<td></td>
+		    	<td></td>
+		    		
+		    	<td colspan="2" style="word-break: break-all;  text-align:center;">学位评定</td>
+		    	<td colspan="2" style="word-break: break-all; text-align:center;">管理学、经济学学士</td>
+		    </tr>
+		  </table>
+		  <table border="1" cellspacing="0"style="width:210mm;">    
+			<tr>
+			<td align="right">	 内蒙古师范大学档案馆<br>
+			    2017年3月10日</td>
+			</tr>
+		</table>
+		</center>
+		<!--endprint-->
+		
+		</div>
+		
+		
 		<div style="width:75%; margin:0 auto;">
 		
 		<!--startprint-->
@@ -230,14 +302,5 @@ $.post("<%=basePath %>changeform", {uid: $('#score').val()},function(data,status
 		<!--endprint-->
 		
 		</div>
-		<form action="sysUser/delete" method="post" id="delForm">
-			<input type="hidden" value="" id="delId" name="ids" />
-		</form>
-		<form action="sysUser/toUpdate" method="post" id="updateForm">
-			<input type="hidden" value="" id="updId" name="updId" />
-		</form>
-		<form action="sysUser/resetPass" method="post" id="resetPassForm">
-			<input type="hidden" value="" id="resetPassIds" name="ids" />
-		</form>
 	</body>
 </html>

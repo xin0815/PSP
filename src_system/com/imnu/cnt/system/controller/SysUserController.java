@@ -37,7 +37,7 @@ public class SysUserController {
 		}
 		request.setAttribute("pager", pageList);
 
-		return "system/SysUser_list";
+		return "system/Professional";
 	}
 	@RequestMapping("list1")
 	public String list1(HttpServletRequest request) {
@@ -55,7 +55,7 @@ public class SysUserController {
 		}
 		request.setAttribute("pager", pageList);
 
-		return "system/SysUser_list1";
+		return "system/institute";
 	}
 	@RequestMapping("query")
 	public String query(HttpServletRequest request) {
