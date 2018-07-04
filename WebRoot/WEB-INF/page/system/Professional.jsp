@@ -95,7 +95,7 @@ window.onload=function(){
 </script>
 
 	<body>
-		<form action="sysUser/query" method="post" id="sysUserForm">
+		<form action="sysUser/Query" method="post" id="sysUserForm">
 		<nav class="navbar navbar-default" role="navigation"
 			style="background-color: rgb(241, 240, 240)">
 		
@@ -166,7 +166,7 @@ window.onload=function(){
 		<form action="sysUser/delete" method="post" id="delForm">
 			<input type="hidden" value="" id="delId" name="ids" />
 		</form>
-		<form action="sysUser/toUpdate" method="post" id="updateForm">
+		<form action="sysUser/toupdate" method="post" id="updateForm">
 			<input type="hidden" value="" id="updId" name="updId" />
 		</form>
 		<form action="sysUser/resetPass" method="post" id="resetPassForm">

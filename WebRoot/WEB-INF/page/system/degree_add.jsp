@@ -135,8 +135,14 @@ window.onload=function(){
 									学位
 								</label>
 								<div class="controls">
-									<input type="text" name="name" value="${sysModule.name }"
-										maxlength="24" onblur="checkName();" />
+									<input type="text" name="name" value="${sysModule.name }" maxlength="24" onblur="checkName();" />
+									<span class="help-inline" id="nameErrorInfo"></span>
+								</div>
+								<label class="control-label" for="name">
+									英文翻译
+								</label>
+								<div class="controls">
+									<input type="text" name="name" value="${sysModule.name }" maxlength="24" onblur="checkName();" />
 									<span class="help-inline" id="nameErrorInfo"></span>
 								</div>
 							</div>

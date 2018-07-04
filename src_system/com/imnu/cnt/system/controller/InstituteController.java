@@ -16,7 +16,7 @@ import com.imnu.cnt.system.util.Pager;
 
 @Controller
 @RequestMapping("sysUser")
-public class SysUserController {
+public class InstituteController {
 
 	@Resource(name = "sysUserService")
 	SysUserService sysUserService;
@@ -37,26 +37,9 @@ public class SysUserController {
 		}
 		request.setAttribute("pager", pageList);
 
-		return "system/Professional";
-	}
-	@RequestMapping("list1")
-	public String list1(HttpServletRequest request) {
-
-		SysUser sysUser = new SysUser();
-		String pageSize = request.getParameter("pageSize");
-		String currentPage = request.getParameter("currentPage");
-
-
-		Pager pageList = null;
-		try {
-			pageList = sysUserService.find(sysUser, currentPage, pageSize);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
-		request.setAttribute("pager", pageList);
-
 		return "system/institute";
 	}
+
 	@RequestMapping("query")
 	public String query(HttpServletRequest request) {
 		SysUser sysUser = new SysUser();
@@ -79,7 +62,7 @@ public class SysUserController {
 		request.setAttribute("expEngagedSub", request
 				.getParameter("expEngagedSub"));
 		request.setAttribute("expMajor", request.getParameter("expMajor"));
-		return "system/SysUser_list";
+		return "system/institute";
 	}
 
 	/*
@@ -135,7 +118,7 @@ public class SysUserController {
 		}
 		request.setAttribute("sysUser", sysUser);
 		String userTypeCode = request.getParameter("userTypeCode");
-		return "system/SysUser_add";
+		return "system/institute_change";
 	}
 	@RequestMapping(value = "toUpdate1", method = RequestMethod.POST)
 	public String toUpdate1(String updId, HttpServletResponse response,
@@ -151,7 +134,7 @@ public class SysUserController {
 		}
 		request.setAttribute("sysUser", sysUser);
 		String userTypeCode = request.getParameter("userTypeCode");
-		return "system/SysUser_add1";
+		return "system/institute_change1";
 	}
 	@RequestMapping(value = "resetPass", method = RequestMethod.POST)
 	public String resetPass(String ids, HttpServletResponse response,

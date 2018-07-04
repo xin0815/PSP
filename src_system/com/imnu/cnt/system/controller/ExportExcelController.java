@@ -22,7 +22,7 @@ import net.sf.jxls.exception.ParsePropertyException;
 import net.sf.jxls.transformer.XLSTransformer;
 
 @Controller
-public class EmployeeController {
+public class ExportExcelController {
 
     /**
 
@@ -40,16 +40,16 @@ public class EmployeeController {
 
         //模拟数据
 
-        List<Employee> staff = new ArrayList<Employee>();
+        /*List<Employee> staff = new ArrayList<Employee>();
 
 
         staff.add(new Employee());
 
-        staff.add(new Employee());
+        staff.add(new Employee());*/
 
         Map<String,Object> beans = new HashMap<String,Object>();
 
-        beans.put("employees", staff);
+      //  beans.put("employees", staff);
         beans.put("employ", "内蒙古师范大学");
 
         XLSTransformer transformer = new XLSTransformer();

@@ -16,17 +16,4 @@ public class ScoreController {
 	{
 		return "system/Score";
 	}
-	@RequestMapping("changeform")
-	public void changeform(String uid,HttpServletResponse response) throws IOException
-	{
-		if(uid == "1")
-		{
-			
-			response.getWriter().print("1");
-		}
-		else
-		{
-			response.getWriter().print("2");
-		}
-	}
 }

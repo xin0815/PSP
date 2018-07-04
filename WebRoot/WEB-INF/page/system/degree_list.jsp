@@ -96,10 +96,10 @@ $(function(){
 	<body>
 		<form action="sysModule/query" method="post" id="sysModuleForm">
 			<div class="well form-search">
-				名称
+				学位
 				<input type="text" name="name" value="${requestScope.name }"
 					class="input-medium search-query" />
-				年纪
+				英文
 				<input type="text" name="name" value="${requestScope.name }"
 					class="input-medium search-query" />
 				<button type="submit" class="btn btn-info" id="chaxun">
@@ -117,7 +117,7 @@ $(function(){
 							学位
 						</td>
 						<td>
-							对应年级
+							对应英文
 						</td>
 					</tr>
 					<c:forEach var="sysModule" items="${sysModuleList}">

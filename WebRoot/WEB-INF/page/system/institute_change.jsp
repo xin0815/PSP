@@ -133,7 +133,6 @@ function checkConfirmPassword(){
 					<div class="controls">
 						<input class="form-control" style="width:15%" type="text" name="account" value="${sysUser.account }"
 							maxlength="24" onblur="checkAccount()" />
-						<span class="help-inline" id="accountError">账号必须2~16位长度，且只能包含英文字母、数字和下划线。</span>
 						<span class="help-inline" id="accountUniqueError"
 							style="display: none;">此账号已存在。</span>
 					</div>
