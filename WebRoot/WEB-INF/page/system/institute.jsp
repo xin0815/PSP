@@ -24,6 +24,13 @@
 		<script language="javascript" src="<%=basePath%>js/common.js"></script>
 	</head>
 <script language="javascript">
+function update(code,username)
+{	
+	console.log(username);
+	var name = prompt("学院名称\n"+username+"\n请输入你要修改的英文");
+	if(name!=null)
+		window.location.href="<%=basePath%>sysUser/toAdd?id="+code+"&name="+name;
+}
 $(function(){
 	//跳到添加页，进行添加操作
 	$("#tj").click(function(){
@@ -77,39 +84,10 @@ $(function(){
                              }
             	     }
         });
-        
-        
-    //全选和全不选操作
-    $("#selectAll").click(function(){
-           var size = $("#selectAll:checked").size();
-           if(size == 1)//全选
-               {
-                     $("input[name='checkbox']").each(function(i,o){
-                          o.checked = true;   
-                     });
-               }
-           if(size == 0)//全不选
-               {
-        	      $("input[name='checkbox']").each(function(i,o){
-                       o.checked = false;   
-                   });
-               }
-        });
 
     $("#chaxun").click(function(){//查询操作
     		trimAll();
              $("#sysUserForm").submit();
-        });
-
-   $("#update").click(function(){//跳到更新页，进行更新操作
-    	   var size =  $("input[name='checkbox']:checked").size();
-    	   if(size != 1)
-        	   {
-    		   	   swal("错误提示", "请选择且只选一个修改", "error");
-                   return;
-        	   }
-           $("#updId").val($("input[name='checkbox']:checked").val());
-           $("#updateForm").submit();
         });
 })
 window.onload=function(){
@@ -127,66 +105,45 @@ window.onload=function(){
 		<form action="sysUser/query" method="post" id="sysUserForm">
 		<nav class="navbar navbar-default" role="navigation"
 			style="background-color: rgb(241, 240, 240)">
-		
-				年级
-				<select id="categoryId" name="categoryId" class="input-medium">
-					<option value="">
-						---- 全部 ----
-					</option>
-					<c:forEach var="category" items="${categoryList}">
-						<option value="${category.id }">
-							${category.categoryName }
-						</option>
-					</c:forEach>
-				</select>
 				学院
-				<select id="categoryId" name="categoryId" class="input-medium">
+				<select id="categoryId" name="id" class="input-medium">
 					<option value="">
-						---- 全部 ----
+						${degree}
 					</option>
-					<c:forEach var="category" items="${categoryList}">
-						<option value="${category.id }">
-							${category.categoryName }
+					<c:forEach var="category" items="${pager1.data}">
+						<option value="${category.code }">
+							${category.name }
 						</option>
 					</c:forEach>
 				</select>&nbsp;&nbsp;&nbsp;&nbsp;
 					<button type="submit" class="btn btn-primary" id="chaxun">
 					           搜索
 				   </button>
-					<button type="button" class="btn btn-success" id="update">
-						修改
-					</button>
 			</nav>
-			<jsp:include page="../common/Page.jsp" />
-			</form>
 			<center>
 			<div class="table-responsive"><!-- 响应式表格 -->
 			    <table class="table table-condensed table-hover">
 			    	<tr>
-					<td width="30">#</td>
-					<th width="30"><input type="checkbox" name="allcheck" id="selectAll" /></th>
 					<th>学院</th>
 					<th>对应英文</th>
-					<th>对应年级</th>
+					<th>操作</th>
 				</tr>
 				<c:forEach var="sysUser" items="${pager.data}" varStatus="st">
 						<tr>
-							<td ${st.index + 1}></td>
-							<td width="30px"><input type="checkbox" name="checkbox" value="${sysUser.userId}" /></td>
 							<td>
-								${sysUser.userName}
+								${sysUser.name}
 							</td>
 							<td>
-								${sysUser.account}
+								${sysUser.enname}
 							</td>
 							<td>
-								${sysUser.description}
+							<button type="button" class="btn btn-success" onclick="update(${sysUser.code},'${sysUser.name}')">修改</button>
 							</td>
 						</tr>
-					</c:forEach>
-					
+					</c:forEach>					
 					</table>
 				</div>
+				<jsp:include page="../common/Page.jsp" />
      </center>
 		</form>
 		<form action="sysUser/delete" method="post" id="delForm">

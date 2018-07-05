@@ -23,36 +23,8 @@ $(function(){
 	$("#baocun").click(function(){
 		trimAll();
 		var flag = true;
-		if(checkName() == false){
-			flag = false;
-		}
-		if(checkURL() == false){
-			flag = false;
-		}
-		if(document.all.isSynchro.checked == true){
-			if(checkNULL(document.all.ip.value,document.all.ipDIV,document.all.ipErrorInfo) == false){
-				flag = false;
-			}
-			if(checkNULL(document.all.port.value,document.all.portDIV,document.all.portErrorInfo) == false){
-				flag = false;
-			}
-			if(checkNULL(document.all.dbName.value,document.all.dbNameDIV,document.all.dbNameErrorInfo) == false){
-				flag = false;
-			}
-			if(checkNULL(document.all.dbUserName.value,document.all.dbUserNameDIV,document.all.dbUserNameErrorInfo) == false){
-				flag = false;
-			}
-			if(checkNULL(document.all.dbPassword.value,document.all.dbPasswordDIV,document.all.dbPasswordErrorInfo) == false){
-				flag = false;
-			}
-			if(flag == true){
-				$("#form1").submit();
-			}
-		}
 		if(flag == true){
 			$("#form1").submit();
-			document.all.baocun.disabled = true;
-        	document.all._close.disabled = true;	
 		}
 	});
 	$("#_close").click(function(){
@@ -119,10 +91,8 @@ window.onload=function(){
 </script>
 	</head>
 	<body>
-		<form action="sysModule/add" method="post" id="form1"
-			class="form-horizontal">
-			<input type="hidden" name="moduleId" value="${sysModule.moduleId }" />
-			
+		<form action="sysModule/add" method="post" id="form1"class="form-horizontal">
+			<input type="hidden" name="DID" value="${degree.DID}" />
 			<fieldset>
 				<legend>
 					相关业务系统
@@ -135,14 +105,14 @@ window.onload=function(){
 									学位
 								</label>
 								<div class="controls">
-									<input type="text" name="name" value="${sysModule.name }" maxlength="24" onblur="checkName();" />
+									<input type="text" name="DNAME" value="${degree.DNAME }" maxlength="24" onblur="checkName();" />
 									<span class="help-inline" id="nameErrorInfo"></span>
 								</div>
 								<label class="control-label" for="name">
 									英文翻译
 								</label>
 								<div class="controls">
-									<input type="text" name="name" value="${sysModule.name }" maxlength="24" onblur="checkName();" />
+									<input type="text" name="DNAME1" value="${degree.DNAME1 }" maxlength="24" onblur="checkName();" />
 									<span class="help-inline" id="nameErrorInfo"></span>
 								</div>
 							</div>

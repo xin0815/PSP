@@ -23,25 +23,11 @@
 		
 		<script type="text/javascript"><!--
 $(function(){
-	$("#baocun").click(function(){
+$("#baocun").click(function(){
 		trimAll();
 		var flag = true;
-		if(checkName() == false){
-			flag = false;
-		}
-		if(checkAccount() == false){
-			flag = false;
-		}
-		if(checkPassword() == false){
-			flag = false;
-		}
-		if(checkConfirmPassword() == false){
-			flag = false;
-		}
-		if(flag){
+		if(flag == true){
 			$("#form1").submit();
-	        document.all.baocun.disabled = true;
-	        document.all._close.disabled = true;
 		}
 	});
 	$("#_close").click(function(){
@@ -80,38 +66,12 @@ function checkAccount(){
 	}
 	return true;
 }
-
-function checkPassword(){
-    var str = document.all.password.value;
-	var reg = /^[a-zA-Z\d]\w{4,13}[a-zA-Z\d]$/;//正则
-	if(reg.test(str)){
-		document.all.passwordDIV.className="control-group success";
-	}else{
-		document.all.passwordDIV.className="control-group error";
-		return false;
-	}
-	return true;
-}
-
-function checkConfirmPassword(){
-    var pass = document.all.password;
-    var passConfirm = document.all.passwordConfirm;
-	if(pass.value != passConfirm.value){
-		document.all.passwordConfirmDIV.className="control-group error";
-		document.all.passwordConfirmErrorInfo.innerHTML="和密码不一致";
-		return false;
-	}else{
-		document.all.passwordConfirmDIV.className="control-group success"
-		document.all.passwordConfirmErrorInfo.innerHTML="";
-	}
-	return true;
-}
 </script>
 	</head>
 	<body>
 		<form action="sysUser/add" method="post" id="form1"
 			class="form-horizontal form-inline">
-			<input type="hidden" name="userId" value="${sysUser.userId }" />
+			<input type="hidden" name="code" value="${xiku.code}" />
 			<fieldset>
 				<legend>
 					学院资料
@@ -121,8 +81,11 @@ function checkConfirmPassword(){
 						学院名称
 					</label>
 					<div class="controls">
-						<input class="form-control" style="width:15%" type="text" name="userName" value="${sysUser.userName }"
-							maxlength="24" onblur="checkName();" />
+						${xiku.name}
+						<input class="form-control" style="width:15%" type="hidden" name="name" value="${xiku.name}"
+							maxlength="24" onblur="checkAccount()" />
+						<input class="form-control" style="width:15%" type="hidden" name="xuhao" value="${xiku.xuhao}"
+							maxlength="24" onblur="checkAccount()" />
 						<span class="help-inline" id="userNameErrorInfo"></span>
 					</div>
 				</div>
@@ -131,7 +94,7 @@ function checkConfirmPassword(){
 						英文翻译
 					</label>
 					<div class="controls">
-						<input class="form-control" style="width:15%" type="text" name="account" value="${sysUser.account }"
+						<input class="form-control" style="width:15%" type="text" name="enname" value="${xiku.enname}"
 							maxlength="24" onblur="checkAccount()" />
 						<span class="help-inline" id="accountUniqueError"
 							style="display: none;">此账号已存在。</span>

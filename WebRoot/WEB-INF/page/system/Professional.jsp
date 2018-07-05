@@ -98,18 +98,6 @@ window.onload=function(){
 		<form action="sysUser/Query" method="post" id="sysUserForm">
 		<nav class="navbar navbar-default" role="navigation"
 			style="background-color: rgb(241, 240, 240)">
-		
-				年级
-				<select id="categoryId" name="categoryId" class="input-medium">
-					<option value="">
-						---- 全部 ----
-					</option>
-					<c:forEach var="category" items="${categoryList}">
-						<option value="${category.id }">
-							${category.categoryName }
-						</option>
-					</c:forEach>
-				</select>
 				学院
 				<select id="categoryId" name="categoryId" class="input-medium">
 					<option value="">
@@ -127,26 +115,20 @@ window.onload=function(){
 					<button type="submit" class="btn btn-primary" id="chaxun">
 					           搜索
 				   </button>
-					<button type="button" class="btn btn-success" id="update">
-						修改
-					</button>
 			</nav>
-			<jsp:include page="../common/Page.jsp" />
-			</form>
+			
 			<center>
 			<div class="table-responsive"><!-- 响应式表格 -->
 			    <table class="table table-condensed table-hover">
 			    	<tr>
-					<td width="30">#</td>
-					<th width="30"><input type="checkbox" name="allcheck" id="selectAll" /></th>
+			    	<th>对应学院</th>
 					<th>专业	</th>
 					<th>对应英文</th>
-					<th>对应年级</th>
+					<th>操作</th>
+					
 				</tr>
 				<c:forEach var="sysUser" items="${pager.data}" varStatus="st">
 						<tr>
-							<td ${st.index + 1}></td>
-							<td width="30px"><input type="checkbox" name="checkbox" value="${sysUser.userId}" /></td>
 							<td>
 								${sysUser.userName}
 							</td>
@@ -156,11 +138,15 @@ window.onload=function(){
 							<td>
 								${sysUser.description}
 							</td>
+							<td>
+							<button type="button" class="btn btn-success" id="update">修改</button>
+							</td>
 						</tr>
 					</c:forEach>
 					
 					</table>
 				</div>
+				<jsp:include page="../common/Page.jsp" />
      </center>
 		</form>
 		<form action="sysUser/delete" method="post" id="delForm">

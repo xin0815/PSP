@@ -1,4 +1,4 @@
-package com.imnu.cnt.system.util;
+ package com.imnu.cnt.system.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,7 +12,7 @@ public class Pager {
 	
 	private static int DEFAULT_PAGE_SIZE = 10;
 	
-	public int pageSize;
+	public int pageSize ;
 	
 	public int currentPage;//当前页数
 	
@@ -42,19 +42,19 @@ public class Pager {
 		this.currentPage = validCurrentPage(currentPage, totalPage);
 	}
 	
-//	public Pager(String currentPage, String pageSize ) {
-//		if(currentPage!=null && currentPage.matches(NUMBER_DEFAULT_PATTERN)){
-//			this.currentPage = validCurrentPage(Integer.parseInt(currentPage), totalPage);
-//		}else{
-//			this.currentPage = 1;
-//		}
-//		if(pageSize!=null && pageSize.matches(NUMBER_DEFAULT_PATTERN)){
-//			this.pageSize = Integer.parseInt(pageSize);
-//		}else{
-//			this.pageSize = DEFAULT_PAGE_SIZE;
-//		}
-//		
-//	}
+/*	public Pager(String currentPage, String pageSize ) {
+		if(currentPage!=null && currentPage.matches(NUMBER_DEFAULT_PATTERN)){
+			this.currentPage = validCurrentPage(Integer.parseInt(currentPage), totalPage);
+		}else{
+			this.currentPage = 1;
+		}
+		if(pageSize!=null && pageSize.matches(NUMBER_DEFAULT_PATTERN)){
+			this.pageSize = Integer.parseInt(pageSize);
+		}else{
+			this.pageSize = DEFAULT_PAGE_SIZE;
+		}
+		
+	}*/
 	
 	public Pager(int currentPage, int pageSize, long totalRecord) {
 		this.pageSize = pageSize;

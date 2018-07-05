@@ -21,13 +21,25 @@
 		<script language="javascript" src="<%=basePath%>js/common.js"></script>
 	</head>
 
-	<script language="javascript">
+<script language="javascript">
+	function edit(DID){
+     		window.location.href="<%=basePath%>sysModule/toAdd?id="+DID;
+	};
+	function del(DID){
+     	window.location.href="<%=basePath%>sysModule/del?id="+DID;
+	};
 $(function(){
 	//跳到添加页，进行添加操作
 	$("#tj").click(function(){
-                 window.location.href="<%=basePath%>sysModule/toAdd";
+          window.location.href="<%=basePath%>sysModule/toAdd";
 		});
-
+	//查询
+	$("#sousuo").click(function(){
+		trimAll();
+        $("#sysModuleForm").submit();
+		
+	});
+	
 	//删除
     $("#del").click(function(){
     	     var checks = $("input[name='checkbox']:checked");
@@ -57,6 +69,7 @@ $(function(){
                              }
             	     }
         });
+     
     //全选和全不选操作
     $("#selectAll").click(function(){
            var size = $("#selectAll:checked").size();
@@ -74,83 +87,54 @@ $(function(){
                }
         });
 
-    $("#chaxun").click(function(){//查询操作
-    		trimAll();
-             $("#sysModuleForm").submit();
-        });
-
-    $("#update").click(function(){//跳到更新页，进行更新操作
-    	   var size =  $("input[name='checkbox']:checked").size();
-    	   if(size != 1)
-        	   {
-                   alert("请选择且只选一个修改");
-                   return;
-        	   }
-           $("#updId").val($("input[name='checkbox']:checked").val());
-           $("#updateForm").submit();
-        });
 })
 
 </script>
 
 	<body>
 		<form action="sysModule/query" method="post" id="sysModuleForm">
-			<div class="well form-search">
-				学位
-				<input type="text" name="name" value="${requestScope.name }"
-					class="input-medium search-query" />
-				英文
-				<input type="text" name="name" value="${requestScope.name }"
-					class="input-medium search-query" />
-				<button type="submit" class="btn btn-info" id="chaxun">
-					搜索
-				</button>
-			</div>
+		<div class="well form-search">
+			学位
+			<input type="text" name="degreename" value="${degree}">
+			英文
+			<input type="text" name="name"class="input-medium search-query" />
+			<button type="button" class="btn btn-info" id="sousuo">搜索</button>
+			<button type="button" class="btn btn-info" id="tj">新增</button>
+		</div>
 			<center>
-				<span style="color: red">${errorInfo}</span>
 				<table class="table table-striped table-bordered table-condensed">
 					<tr>
-						<td width="30">
-							<input type="checkbox" name="allcheck" id="selectAll" />
-						</td>
+
 						<td>
 							学位
 						</td>
 						<td>
 							对应英文
 						</td>
+						<td>
+						操作
+						</td>
 					</tr>
-					<c:forEach var="sysModule" items="${sysModuleList}">
+					<c:forEach var="degree" items="${pager.data}">
 						<tr>
-							<td width="30px">
-								<input type="checkbox" name="checkbox"
-									value="${sysModule.moduleId}" />
+							<td>
+								${degree.DNAME}
 							</td>
 							<td>
-								${sysModule.name}
-							</td>
-							<td>
-								${sysModule.description}
-							</td>
+								${degree.DNAME1}
+								</td>
+								<td>
+						<button type="button" class="btn btn-info" onclick="edit(${degree.DID})">修改</button>
+						<button type="button" class="btn btn-warning"  onclick="del(${degree.DID})">删除</button>
+						</td>
 						</tr>
-					</c:forEach>
 
+					</c:forEach>
 				</table>
-				<!-- Page Module Begin
+				
 				<div class="pageBody">
 					<jsp:include page="../common/Page.jsp" />
-				</div> -->
-				<div>
-					<button type="button" class="btn btn-info" id="tj">
-						新增
-					</button>
-					<button type="button" class="btn btn-info" id="update">
-						修改
-					</button>
-					<button type="button" class="btn btn-warning" id="del">
-						删除
-					</button>
-				</div>
+				</div> 
 			</center>
 		</form>
 		<form action="sysModule/delete" method="post" id="delForm">
