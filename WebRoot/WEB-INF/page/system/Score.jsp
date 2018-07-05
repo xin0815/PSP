@@ -24,11 +24,16 @@
 		<script language="javascript" src="<%=basePath%>js/jquery.base64.js"></script>
 		<script language="javascript" src="<%=basePath%>js/common.js"></script>
 		<script language="javascript" src="<%=basePath%>js/tableExport.js"></script>
-		
+		<style type="text/css">
+			.score{
+				border: 1px #000 solid;
+			}
+			
+		</style>
 	</head>
 <script language="javascript">
 
-function preview()
+/* function preview()
 {
 	
 	var bdhtml=window.document.body.innerHTML;//获取当前页的html代码
@@ -46,20 +51,34 @@ function preview()
 	window.print();
 	window.document.body.innerHTML=bdhtml;
 	changeform();
-}
+} */
 $(document).ready(function(){
 	changeform();
+	$("#export").click(function(){
+		window.location.href="<%=basePath %>score/exportExcel";
+	});
+	$.post("<%=basePath %>score/excel2html",{
+		stuNumber: 123
+	},function(data,status){
+		if(status == 'success'){
+			console.log(data)
+			$("#table").html(data);			
+		}else{
+			console.log(123)
+		}
+	});
+	
 });
 
 function changeform()
 {
-	if($("#score").val() == '1'){
+	/* if($("#score").val() == '1'){
 		$("#en_table").hide();
 		$("#cn_table").show();
 	}else if($("#score").val() == '2'){
 		$("#cn_table").hide();
 		$("#en_table").show();
-	}
+	} */
 	
 }
 </script>
@@ -69,7 +88,6 @@ function changeform()
 		<form action="sysUser/query" method="post" id="sysUserForm">
 		<nav class="navbar navbar-default" role="navigation"
 			style="background-color: rgb(241, 240, 240)">
-		
 				年级
 				<select id="categoryId" name="categoryId" class="input-medium">
 					<option value="">
@@ -114,8 +132,8 @@ function changeform()
 				<center>
 				<br/>
 
-				   	<button type="button" class="btn btn-success" id="print">
-				   	<a href = "<%=basePath %>export">导出Excel</a>
+				   	<button type="button" class="btn btn-success" id="export">
+				   		导出Excel
 					</button>	
 				   <button type="button" class="btn btn-success" id="printshow">
 				   <a href="<%=basePath %>download">打印证明</a> 	
@@ -125,31 +143,33 @@ function changeform()
 					</button>	
 				</center>				
 			</nav>
-			成绩单参数设置：<br/>			
-			不显示不及格:
-			<input type="checkbox" name=""value="主修"/>主修&nbsp
-			<input type="checkbox" name=""value="辅修"/>辅修&nbsp
-			<input type="checkbox" name=""value="任选"/>任选&nbsp
-			<input type="checkbox" name=""value="限选"/>限选<br/>
-			不显示：
-			<input type="checkbox" name=""value="主修"/>主修&nbsp
-			<input type="checkbox" name=""value="辅修"/>辅修&nbsp
-			<input type="checkbox" name=""value="任选"/>任选&nbsp
-			<input type="checkbox" name=""value="限选"/>限选<br/>
+			<div class="score">
+				成绩单参数设置：<br/>			
+				不显示不及格:
+				<input type="checkbox" name="" value="主修"/>主修&nbsp
+				<input type="checkbox" name="" value="辅修"/>辅修&nbsp
+				<input type="checkbox" name="" value="任选"/>任选&nbsp
+				<input type="checkbox" name="" value="限选"/>限选<br/>
+				不显示：
+				<input type="checkbox" name="" value="主修"/>主修&nbsp
+				<input type="checkbox" name="" value="辅修"/>辅修&nbsp
+				<input type="checkbox" name="" value="任选"/>任选&nbsp
+				<input type="checkbox" name="" value="限选"/>限选<br/>
+			</div>
 			<jsp:include page="../common/Page.jsp" />
 			</form>
 			
 			<div style="width:25%; margin:0 auto;height:600px; float:left;"><!--- 响应式表格 -->
 			 <table class="table table-condensed table-hover">
 			    <tr>
-					<th width="100px">序号</th>
 					<th width="50px"><input type="checkbox" name="allcheck" id="selectAll" /></th>
+					<th width="100px">序号</th>
 					<th width="100px">学号</th>
 					<th width="250px">姓名</th>
 				</tr>
 				<tr>
-					<td>1</td>
 					<td width="30px"><input type="checkbox" name="checkbox" value="${sysUser.userId}" /></td>
+					<td>1</td>
 					<td>200520071</td>
 					<td>张婷婷</td>
 				</tr>
@@ -171,9 +191,9 @@ function changeform()
 					
 			</table>
 		</div>
-		<div style="width:75%; margin:0 auto; " id="cn_table">
+		<div style="width:75%; margin:0 auto; " id="table">
 		
-		<!--startprint-->
+		<%-- <!--startprint-->
 		<center>
 		<table border="1" cellspacing="0"style="width:210mm; " >
 		
@@ -236,12 +256,12 @@ function changeform()
 			</tr>
 		</table>
 		</center>
-		<!--endprint-->
+		<!--endprint--> --%>
 		
 		</div>
 		
 		
-		<div style="width:75%; margin:0 auto;" id="en_table">
+		<%-- <div style="width:75%; margin:0 auto;" id="en_table">
 		
 		<!--startprint_en-->
 		<center>
@@ -308,6 +328,6 @@ function changeform()
 		</center>
 		<!--endprint_en-->
 		
-		</div>
+		</div> --%>
 	</body>
 </html>

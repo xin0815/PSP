@@ -66,6 +66,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-jexl-2.0.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-ooxml-3.9.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-3.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jxl.jar"/>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.hibernate.MYECLIPSE_HIBERNATE3_1_CORE"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/XmlSchema-1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-codec-1.3.jar"/>
