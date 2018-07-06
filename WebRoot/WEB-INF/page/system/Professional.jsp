@@ -24,10 +24,17 @@
 	<script language="javascript" src="<%=basePath%>js/common.js"></script>
 </head>
 <script language="javascript">
+function update(code,username)
+{	
+	console.log(username);
+	var name = prompt("学院名称\n"+username+"\n请输入你要修改的英文");
+	if(name!=null)
+		window.location.href="<%=basePath%>professional/toAdd?id="+code+"&name="+name;
+}
 $(function(){
 	//跳到添加页，进行添加操作
 	$("#tj").click(function(){
-		window.location.href="<%=basePath%>sysUser/toAdd";
+		window.location.href="<%=basePath%>professional/toAdd";
 	});
 	//删除
       $("#del").click(function(){
@@ -71,17 +78,6 @@ $(function(){
     		trimAll();
              $("#sysUserForm").submit();
         });
-
-   $("#update").click(function(){//跳到更新页，进行更新操作
-    	   var size =  $("input[name='checkbox']:checked").size();
-    	   if(size != 1)
-        	   {
-    		   	   swal("错误提示", "请选择且只选一个修改", "error");
-                   return;
-        	   }
-           $("#updId").val($("input[name='checkbox']:checked").val());
-           $("#updateForm").submit();
-        });
 })
 window.onload=function(){
 	var _options = document.all.categoryId.options;
@@ -95,22 +91,11 @@ window.onload=function(){
 </script>
 
 	<body>
-		<form action="sysUser/Query" method="post" id="sysUserForm">
+		<form action="professional/Query" method="post" id="sysUserForm">
 		<nav class="navbar navbar-default" role="navigation"
 			style="background-color: rgb(241, 240, 240)">
-				学院
-				<select id="categoryId" name="categoryId" class="input-medium">
-					<option value="">
-						---- 全部 ----
-					</option>
-					<c:forEach var="category" items="${categoryList}">
-						<option value="${category.id }">
-							${category.categoryName }
-						</option>
-					</c:forEach>
-				</select>&nbsp;&nbsp;&nbsp;&nbsp;
 				专业
-				<input name="profession	" value="专业"/>
+				<input name="profession" value="${degree}"/>
 				</select>
 					<button type="submit" class="btn btn-primary" id="chaxun">
 					           搜索
@@ -121,7 +106,6 @@ window.onload=function(){
 			<div class="table-responsive"><!-- 响应式表格 -->
 			    <table class="table table-condensed table-hover">
 			    	<tr>
-			    	<th>对应学院</th>
 					<th>专业	</th>
 					<th>对应英文</th>
 					<th>操作</th>
@@ -130,19 +114,16 @@ window.onload=function(){
 				<c:forEach var="sysUser" items="${pager.data}" varStatus="st">
 						<tr>
 							<td>
-								${sysUser.userName}
+								${sysUser.name}
 							</td>
 							<td>
-								${sysUser.account}
+								${sysUser.enName}
 							</td>
 							<td>
-								${sysUser.description}
-							</td>
-							<td>
-							<button type="button" class="btn btn-success" id="update">修改</button>
+							<button type="button" class="btn btn-success" onclick="update(${sysUser.code},'${sysUser.name}')">修改</button>
 							</td>
 						</tr>
-					</c:forEach>
+				</c:forEach>
 					
 					</table>
 				</div>

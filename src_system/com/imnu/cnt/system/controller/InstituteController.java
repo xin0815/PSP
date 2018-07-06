@@ -56,11 +56,18 @@ public class InstituteController {
 		if(id!="")
 		{
 			pageList = xikuservice.findByname(id, currentPage, "10");
+			try {
+				pageList1 = xikuservice.findall(xiku, currentPage, pageSize);
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			Xiku xiku1 = xikuservice.findByid(id);
 			//System.out.println(pageList.getTotalRecord());
-			if (pageList != null) {
+			if (pageList != null&&xiku1!=null) {
 				model.addAttribute("pager", pageList);
 				model.addAttribute("degree",xiku1.getName());
+				request.setAttribute("pager1", pageList1);
 				return "system/institute";
 			} else {
 				return "system/institute";
